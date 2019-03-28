@@ -12,7 +12,7 @@ namespace Homework4_2
         public uint productId { get; set; }
         public string productName { get; set; }
 
-        public product(double price,uint id,string name)
+        public product(double price,uint id,string name)        //商品初始化函数
         {
             this.price = price;
             this.productId = id;
