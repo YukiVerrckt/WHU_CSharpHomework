@@ -11,6 +11,7 @@ namespace Homework4_2
         public uint cilentId { get; set; }
         public string cilentName { get; set; }
 
+        public cilent() { }
         public cilent(uint id,string name)
         {
             this.cilentId = id;

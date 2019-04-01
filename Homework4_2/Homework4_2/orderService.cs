@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Homework4_2
 {
     class orderService
     {
-        List<order> orderList = new List<order>();
+       public  List<order> orderList = new List<order>();
         public orderService() { }
         public order addOrder(uint id,cilent customer )
         {
@@ -52,7 +53,15 @@ namespace Homework4_2
         public void searchOrder(string keyword)
         {
 
-            foreach (order orderI in orderList)
+            var result = from n in orderList
+                         where (n.Id.ToString() == keyword || n.Client.cilentId.ToString() == keyword || n.Client.cilentName == keyword||n.include(keyword))
+                         select n;
+            result.ToList();
+            foreach(order I in result)
+            {
+                Console.WriteLine(I.ToString());
+            }
+           /* foreach (order orderI in orderList)
             {
                 if(orderI.Id.ToString()==keyword||orderI.Client.cilentId.ToString()== keyword || orderI.Client.cilentName == keyword)
                     Console.WriteLine(orderI.ToString());
@@ -61,8 +70,8 @@ namespace Homework4_2
                     if (detailI.productKind.productName == keyword)
                         Console.WriteLine(orderI.ToString());
                 }
-            }
-            
+            }*/
+
         }
         public void priceSort()
         {
@@ -71,6 +80,68 @@ namespace Homework4_2
             {
                 Console.WriteLine(f.ToString()+"总价"+f.calculate().ToString());
             }
+        }
+
+        public void CreateXmlFile()
+        {
+
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlDeclaration xmldecl = xmlDoc.CreateXmlDeclaration("1.0", "utf-8", null);
+            XmlElement root = xmlDoc.DocumentElement;
+            xmlDoc.InsertBefore(xmldecl, root);
+
+            XmlElement ele = xmlDoc.CreateElement("Table");
+            xmlDoc.AppendChild(ele);
+
+ 
+            foreach(order I in orderList)
+            {
+                XmlElement row = xmlDoc.CreateElement("row");
+
+                row.SetAttribute("Version", "2.0");
+                row.SetAttribute("AppId", "111");
+
+
+                XmlElement orderID = xmlDoc.CreateElement("ID");
+                orderID.InnerText = I.Id.ToString();
+                row.AppendChild(orderID);
+
+                XmlElement cilentID = xmlDoc.CreateElement("客户ID");
+                cilentID.InnerText = I.Client.cilentId.ToString();
+                row.AppendChild(cilentID);
+
+                XmlElement cilentName = xmlDoc.CreateElement("客户Name");
+                cilentName.InnerText = I.Client.cilentName.ToString();
+                row.AppendChild(cilentName);
+
+                XmlElement detailID = xmlDoc.CreateElement("DetailID");
+                detailID.InnerText = I.detailList[0].orderDetailId.ToString();
+                row.AppendChild(detailID);
+
+                ele.AppendChild(row);
+            }
+                    xmlDoc.Save("d://data.xml");         
+        }
+
+
+        public void ReadXml(List<order> orderlist)
+        {
+            //将XML文件加载进来
+            XmlDocument document=new XmlDocument();
+            document.Load("d://data.xml");
+            //获取到XML的根元素进行操作
+            XmlNodeList list = document.SelectNodes("/Table/row");
+            
+            cilent NewCilent=new cilent();
+            foreach (XmlNode item in list)
+            {
+                NewCilent = new cilent(uint.Parse(item["客户ID"].InnerText), item["客户Name"].InnerText);
+                order tmp = new order();
+                tmp =this.addOrder(uint.Parse(item["ID"].InnerText), NewCilent);
+                tmp.addDetail(Program.detailList[int.Parse(item["DetailID"].InnerText)-1]);
+                
+            }
+            
         }
 
     }

@@ -33,6 +33,8 @@ namespace Homework4_2
                 return true;
             return true;
         }
+
+
         public override int GetHashCode()
         {
             return this.orderDetailId.GetHashCode();

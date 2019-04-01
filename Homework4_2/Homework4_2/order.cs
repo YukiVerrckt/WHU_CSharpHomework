@@ -97,6 +97,15 @@ namespace Homework4_2
 
             return Equals((order)obj);
         }
+        public bool include(string keyword)
+        {
+            foreach(orderDetail I in detailList)
+            {
+                if (I.productKind.productName == keyword)
+                    return true;
+            }
+            return  false;
+        }
         public override int GetHashCode()       //重写HashCode
         {
             return this.Id.GetHashCode();

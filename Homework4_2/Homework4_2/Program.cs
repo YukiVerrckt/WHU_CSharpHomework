@@ -9,13 +9,15 @@ namespace Homework4_2
 
     class Program
     {
+        public static List<orderDetail> detailList = new List<orderDetail>();
         static void Main(string[] args)
         {
             orderService orderManage = new orderService();
             string menuKey;                       //功能选择
-            List<cilent> cilentList = new List<cilent>();
+            
             cilent customer1 = new cilent(1, "Customer1");
             cilent customer2 = new cilent(2, "Customer2");
+            List<cilent> cilentList = new List<cilent>();
             cilentList.Add(customer1); cilentList.Add(customer2);  //客户列表
 
             product milk = new product(69.9, 1, "Milk");
@@ -26,14 +28,14 @@ namespace Homework4_2
             orderDetail orderDetails1 = new orderDetail(1, apple, 8);
             orderDetail orderDetails2 = new orderDetail(2, eggs, 2);
             orderDetail orderDetails3 = new orderDetail(3, milk, 1);
-            List<orderDetail> detailList = new List<orderDetail>();
+            
             detailList.Add(orderDetails1);detailList.Add(orderDetails2);detailList.Add(orderDetails3);      //订单详细列表（简化输入）
 
             try
             {
                 do
                 {
-                    Console.WriteLine("请输入功能选择：1.添加订单2.删除订单3.排列订单 4.查询订单 5.价格排序订单 0.退出");//功能选择
+                    Console.WriteLine("请输入功能选择：1.添加订单2.删除订单3.排列订单 4.查询订单 5.价格排序订单 6.输出XML 0.退出");//功能选择
                     menuKey = Console.ReadLine();
                     switch (menuKey)
                     {
@@ -66,6 +68,12 @@ namespace Homework4_2
                             break;
                         case "5":                                                           //Lambda价格排序
                             orderManage.priceSort();
+                            break;
+                        case "6":
+                            orderManage.CreateXmlFile();
+                            break;
+                        case "7":
+                            orderManage.ReadXml(orderManage.orderList);
                             break;
                         default: break;
                     }
