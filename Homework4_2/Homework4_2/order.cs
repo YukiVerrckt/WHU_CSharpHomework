@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework4_2
 {
-   class order:IEquatable<order>,IComparable
+   public class order:IEquatable<order>,IComparable
     {
         public uint Id { get; set;}     //订单编号
         private double price;           //订单总价
@@ -113,7 +113,10 @@ namespace Homework4_2
 
         public override string ToString()          //重写ToString
         {
-            return $"订单号:{Id}, 客户ID:{this.Client.cilentId}, 客户名:{this.Client.cilentName},细节列表:{this.detailList[0].ToString()}";
+            if (this.detailList.Count!=0)
+                return $"订单号:{Id}, 客户ID:{this.Client.cilentId}, 客户名:{this.Client.cilentName},细节列表:{this.detailList[0].ToString()}";
+            else
+                return $"订单号:{Id}, 客户ID:{this.Client.cilentId}, 客户名:{this.Client.cilentName},细节列表: 空";
         }
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework4_2
 {
-    class product
+    public class product
     {
         private double price;
         public uint productId { get; set; }

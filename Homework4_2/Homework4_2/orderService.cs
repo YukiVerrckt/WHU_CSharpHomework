@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace Homework4_2
 {
-    class orderService
+    public class orderService
     {
        public  List<order> orderList = new List<order>();
         public orderService() { }
+     
         public order addOrder(uint id,cilent customer )
         {
-            foreach(order orderI in orderList)
+           foreach(order orderI in orderList)
             {
 
                 if (orderI.Id == id)
@@ -22,7 +23,7 @@ namespace Homework4_2
 
             order newOrder = new order(id, customer);
             orderList.Add(newOrder);
-                Console.WriteLine("新增订单成功，编号为" + id);
+            Console.WriteLine("新增订单成功，编号为" + id);
             return newOrder;
         }
 
@@ -50,27 +51,28 @@ namespace Homework4_2
             }
         }
 
-        public void searchOrder(string keyword)
+        public List<order> searchOrder(string keyword)
         {
-
+            List<order> output=new List<order>();
             var result = from n in orderList
                          where (n.Id.ToString() == keyword || n.Client.cilentId.ToString() == keyword || n.Client.cilentName == keyword||n.include(keyword))
                          select n;
-            result.ToList();
+            output=result.ToList();
             foreach(order I in result)
             {
                 Console.WriteLine(I.ToString());
             }
-           /* foreach (order orderI in orderList)
-            {
-                if(orderI.Id.ToString()==keyword||orderI.Client.cilentId.ToString()== keyword || orderI.Client.cilentName == keyword)
-                    Console.WriteLine(orderI.ToString());
-                foreach (var detailI in orderI.detailList)
-                {
-                    if (detailI.productKind.productName == keyword)
-                        Console.WriteLine(orderI.ToString());
-                }
-            }*/
+            /* foreach (order orderI in orderList)
+             {
+                 if(orderI.Id.ToString()==keyword||orderI.Client.cilentId.ToString()== keyword || orderI.Client.cilentName == keyword)
+                     Console.WriteLine(orderI.ToString());
+                 foreach (var detailI in orderI.detailList)
+                 {
+                     if (detailI.productKind.productName == keyword)
+                         Console.WriteLine(orderI.ToString());
+                 }
+             }*/
+            return output;
 
         }
         public void priceSort()

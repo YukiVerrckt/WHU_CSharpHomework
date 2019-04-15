@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework4_2
 {
-    class orderDetail
+   public  class orderDetail
     {
         public uint orderDetailId;
         public uint productNum=0;
