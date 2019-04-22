@@ -9,8 +9,9 @@ namespace Homework4_2
    public class order:IEquatable<order>,IComparable
     {
         public uint Id { get; set;}     //订单编号
-        private double price;           //订单总价
+        public double price { get; set; }           //订单总价
         public cilent Client { get; set; }      //客户
+
 
         public List<orderDetail> detailList = new List<orderDetail>();      //订单细节列表
 
