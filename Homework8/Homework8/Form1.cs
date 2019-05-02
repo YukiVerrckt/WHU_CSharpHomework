@@ -15,16 +15,17 @@ namespace Homework8
     public partial class Form1 : Form
     {
         List<order> NewList = new List<order>();
+        List<orderDetail> NewDetail = new List<orderDetail>();
         public Form1()
         {
             InitializeComponent();
-            orderBindingSource = new BindingSource();
-            
-           // orderDetailBindingSource = new BindingSource();
+            orderBindingSource = new BindingSource();            
+            orderDetailBindingSource = new BindingSource();
             orderBindingSource.DataSource = NewList;
-           // orderDetailBindingSource.DataSource = new List<orderDetail>(); 
+            orderDetailBindingSource.DataSource = NewDetail; 
+
             this.myGrid.DataSource = orderBindingSource;
-            
+            this.detailGrid.DataSource = orderDetailBindingSource;
             
         }
 
@@ -32,6 +33,8 @@ namespace Homework8
         {
             Form2 form2 = new Form2();
             form2.ShowDialog();
+            int index = this.myGrid.CurrentRow.Index;
+            detailGrid.DataSource = NewList[index].detailList;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -48,11 +51,6 @@ namespace Homework8
 
         }
 
-
-        private void myGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void orderBindingSource_CurrentChanged(object sender, EventArgs e)
         {
@@ -99,6 +97,23 @@ namespace Homework8
         {
             myGrid.DataSource = orderBindingSource;
             myGrid.Refresh();
+        }
+
+        private void orderDetailBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void myGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            int index = this.myGrid.CurrentRow.Index;
+            detailGrid.DataSource = NewList[index].detailList;
+            detailGrid.Refresh();
+        }
+
+        private void detailGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

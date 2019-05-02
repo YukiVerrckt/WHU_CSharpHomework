@@ -9,9 +9,9 @@ namespace Homework4_2
    public  class orderDetail
     {
         public uint orderDetailId;
-        public uint productNum=0;
-        public product productKind;
-        
+        public uint productNum { get; set; }
+        public product productKind { get; set; }
+
         public orderDetail(uint id, product Goods, uint num)
         {
             this.orderDetailId = id;

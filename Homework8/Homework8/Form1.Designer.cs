@@ -28,20 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox_key = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.myGrid = new System.Windows.Forms.DataGridView();
-            this.orderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox_key = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.detailGrid = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -104,6 +103,24 @@
             this.panel1.Size = new System.Drawing.Size(624, 144);
             this.panel1.TabIndex = 4;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(400, 73);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(76, 19);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "显示全部";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // textBox_key
+            // 
+            this.textBox_key.Location = new System.Drawing.Point(241, 73);
+            this.textBox_key.Name = "textBox_key";
+            this.textBox_key.Size = new System.Drawing.Size(100, 21);
+            this.textBox_key.TabIndex = 6;
+            this.textBox_key.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // button6
             // 
             this.button6.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -124,37 +141,26 @@
             this.myGrid.Name = "myGrid";
             this.myGrid.ReadOnly = true;
             this.myGrid.RowTemplate.Height = 23;
-            this.myGrid.Size = new System.Drawing.Size(510, 315);
+            this.myGrid.Size = new System.Drawing.Size(554, 156);
             this.myGrid.TabIndex = 5;
-            this.myGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.myGrid_CellContentClick);
+            this.myGrid.SelectionChanged += new System.EventHandler(this.myGrid_SelectionChanged);
             // 
-            // orderDetailBindingSource
+            // detailGrid
             // 
-            this.orderDetailBindingSource.DataSource = typeof(Homework4_2.orderDetail);
-            // 
-            // textBox_key
-            // 
-            this.textBox_key.Location = new System.Drawing.Point(241, 73);
-            this.textBox_key.Name = "textBox_key";
-            this.textBox_key.Size = new System.Drawing.Size(100, 21);
-            this.textBox_key.TabIndex = 6;
-            this.textBox_key.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(400, 73);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(76, 19);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "显示全部";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.detailGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.detailGrid.Location = new System.Drawing.Point(39, 195);
+            this.detailGrid.Name = "detailGrid";
+            this.detailGrid.RowTemplate.Height = 23;
+            this.detailGrid.Size = new System.Drawing.Size(554, 168);
+            this.detailGrid.TabIndex = 6;
+            this.detailGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.detailGrid_CellContentClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(626, 525);
+            this.Controls.Add(this.detailGrid);
             this.Controls.Add(this.myGrid);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -163,7 +169,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detailGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -178,9 +184,10 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView myGrid;
         public static System.Windows.Forms.BindingSource orderBindingSource;
-        private System.Windows.Forms.BindingSource orderDetailBindingSource;
+        public static System.Windows.Forms.BindingSource orderDetailBindingSource;
         private System.Windows.Forms.TextBox textBox_key;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridView detailGrid;
     }
 }
 
