@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Homework4_2;
+
 namespace Homework8
 {
     public partial class InputForm : Form
@@ -42,8 +42,8 @@ namespace Homework8
                     MessageBox.Show("输入不能为空");
                 else
                 {
-                    uint i = (uint)(tmpOrder.detailList.Count);
-                    NewDetail = new orderDetail(i,new product(double.Parse(textBox_Price.Text), uint.Parse(textBox_ProductId.Text), textBox_Name.Text),uint.Parse(textBox_Num.Text));
+                    int i = tmpOrder.detailList.Count;
+                    NewDetail = new orderDetail(i,new product(double.Parse(textBox_Price.Text), uint.Parse(textBox_ProductId.Text), textBox_Name.Text),int.Parse(textBox_Num.Text));
                     Close();
                 }
             }

@@ -37,16 +37,15 @@
             this.textBox_key = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.myGrid = new System.Windows.Forms.DataGridView();
-            this.detailGrid = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detailGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button1.Location = new System.Drawing.Point(11, 15);
+            this.button1.Location = new System.Drawing.Point(61, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 23);
             this.button1.TabIndex = 0;
@@ -57,7 +56,7 @@
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button2.Location = new System.Drawing.Point(340, 15);
+            this.button2.Location = new System.Drawing.Point(61, 54);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 23);
             this.button2.TabIndex = 1;
@@ -68,7 +67,7 @@
             // button3
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button3.Location = new System.Drawing.Point(171, 15);
+            this.button3.Location = new System.Drawing.Point(257, 15);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(103, 23);
             this.button3.TabIndex = 2;
@@ -79,7 +78,7 @@
             // button4
             // 
             this.button4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button4.Location = new System.Drawing.Point(79, 73);
+            this.button4.Location = new System.Drawing.Point(61, 96);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(103, 23);
             this.button4.TabIndex = 3;
@@ -91,6 +90,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.textBox_key);
             this.panel1.Controls.Add(this.button6);
@@ -105,9 +105,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(400, 73);
+            this.button5.Location = new System.Drawing.Point(490, 58);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(76, 19);
+            this.button5.Size = new System.Drawing.Size(102, 19);
             this.button5.TabIndex = 7;
             this.button5.Text = "显示全部";
             this.button5.UseVisualStyleBackColor = true;
@@ -115,7 +115,7 @@
             // 
             // textBox_key
             // 
-            this.textBox_key.Location = new System.Drawing.Point(241, 73);
+            this.textBox_key.Location = new System.Drawing.Point(257, 98);
             this.textBox_key.Name = "textBox_key";
             this.textBox_key.Size = new System.Drawing.Size(100, 21);
             this.textBox_key.TabIndex = 6;
@@ -137,30 +137,26 @@
             this.myGrid.AllowUserToAddRows = false;
             this.myGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.myGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.myGrid.Location = new System.Drawing.Point(39, 33);
+            this.myGrid.Location = new System.Drawing.Point(39, 21);
             this.myGrid.Name = "myGrid";
             this.myGrid.ReadOnly = true;
             this.myGrid.RowTemplate.Height = 23;
-            this.myGrid.Size = new System.Drawing.Size(554, 156);
+            this.myGrid.Size = new System.Drawing.Size(554, 341);
             this.myGrid.TabIndex = 5;
             this.myGrid.SelectionChanged += new System.EventHandler(this.myGrid_SelectionChanged);
             // 
-            // detailGrid
+            // textBox1
             // 
-            this.detailGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.detailGrid.Location = new System.Drawing.Point(39, 195);
-            this.detailGrid.Name = "detailGrid";
-            this.detailGrid.RowTemplate.Height = 23;
-            this.detailGrid.Size = new System.Drawing.Size(554, 168);
-            this.detailGrid.TabIndex = 6;
-            this.detailGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.detailGrid_CellContentClick);
+            this.textBox1.Location = new System.Drawing.Point(257, 54);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 8;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(626, 525);
-            this.Controls.Add(this.detailGrid);
             this.Controls.Add(this.myGrid);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -169,7 +165,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detailGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -187,7 +182,7 @@
         public static System.Windows.Forms.BindingSource orderDetailBindingSource;
         private System.Windows.Forms.TextBox textBox_key;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.DataGridView detailGrid;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

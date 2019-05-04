@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Homework4_2
+namespace Homework8
 {
    public  class orderDetail
     {
-        public uint orderDetailId;
-        public uint productNum { get; set; }
+        public int orderDetailId { get; set; }
+        public int productNum { get; set; }
         public product productKind { get; set; }
 
-        public orderDetail(uint id, product Goods, uint num)
+        public orderDetail(int id, product Goods, int num)
         {
             this.orderDetailId = id;
             this.productKind = Goods;

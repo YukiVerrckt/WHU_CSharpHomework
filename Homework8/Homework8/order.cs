@@ -6,20 +6,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace Homework4_2
+namespace Homework8
 {
    public class order:IEquatable<order>,IComparable
     {
         [Key]
-        public uint Id { get; set;}     //订单编号
+        public int Id { get; set;}     //订单编号
         public double price { get; set; }           //订单总价
-        public cilent Client { get; set; }      //客户
+        public cilent Client;      //客户
+        public string detailString { get; set; }
+        public List<orderDetail> detailList { get; set; }
 
 
-        public List<orderDetail> detailList = new List<orderDetail>();      //订单细节列表
 
-        public order(){ }
-        public order(uint order_no, cilent Client) { this.Id = order_no; this.Client = Client; }        //创建订单
+
+
+        public order()
+        {
+            detailList = new List<orderDetail>();  //订单细节列表}
+        }
+        public order(int order_no, cilent Client)
+        {
+            this.Id = order_no; this.Client = Client;
+            detailList = new List<orderDetail>();
+
+        }        //创建订单
 
         public double calculate()           //计算订单总价函数
         {
@@ -27,7 +38,7 @@ namespace Homework4_2
             foreach (var detailI in detailList)
             {
                
-                this.price += detailI.productNum * detailI.productKind.Price;
+                this.price += detailI.productNum * detailI.productKind.price;
             }
             return this.price;
         }

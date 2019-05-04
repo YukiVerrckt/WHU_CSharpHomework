@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Homework4_2
+namespace Homework8
 {
     public class product
     {
@@ -21,18 +21,9 @@ namespace Homework4_2
             this.productName = name;
         }
 
-        public double Price
-        {
-            get { return price; }
-            set {
-                if (value < 0)
-                    throw new ArgumentOutOfRangeException("value must >= 0!");
-                price = value;
-            }
-        }
         public override string ToString()
         {
-            return $"商品ID:{productId}, 商品名:{productName}, 商品价格:{Price}";
+            return $"商品ID:{productId}, 商品名:{productName}, 商品价格:{price}";
         }
     }
 }
