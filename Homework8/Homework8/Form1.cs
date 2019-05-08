@@ -23,48 +23,44 @@ namespace Homework8
             orderDetailBindingSource = new BindingSource();
             orderDetailBindingSource.DataSource = NewDetail;
             this.myGrid.DataSource = orderBindingSource;
-            
-        
+            this.detailGrid.DataSource = orderDetailBindingSource;
+            using (var db = new newModel())
+            {
+                NewList=db.orderDb.ToList();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
             form2.ShowDialog();
-            using (var db = new newModel())
-            {
-                NewList = db.orderDb.ToList();
-                orderBindingSource.DataSource = NewList;
-                this.myGrid.DataSource = orderBindingSource;
-                myGrid.Refresh();
-            }
-
+            orderBindingSource.DataSource = NewList;
+            this.myGrid.DataSource = orderBindingSource;
+            int index = this.myGrid.CurrentRow.Index;
+            detailGrid.DataSource = NewList[index].detailList;
+            myGrid.Refresh();          
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (this.myGrid.CurrentRow != null)
             {
-                int Id = int.Parse(textBox1.Text);
+                int index = this.myGrid.CurrentRow.Index;
+                int a=NewList[index].Id;
                 //根据索引，删除DataGridView里面选中的记录          
                 using (var db = new newModel())
                 {
-                    var tmp = db.orderDb.SingleOrDefault(o => o.Id == Id);
-                    db.orderDb.Remove(tmp);
-                    
-                    db.SaveChanges();
-                    NewList = db.orderDb.ToList();
-                    myGrid.Refresh();
-                    
+                    var tmp = db.orderDb.SingleOrDefault(o => o.Id == a);
+                    db.orderDb.Remove(tmp);                   
+                    db.SaveChanges();                   
                 }
-               // orderBindingSource.RemoveAt(index);
+               orderBindingSource.RemoveAt(index);
+                myGrid.Refresh();
+                detailGrid.Refresh();
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-        }
 
 
         private void orderBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -72,10 +68,6 @@ namespace Homework8
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -125,6 +117,12 @@ namespace Homework8
 
         private void myGrid_SelectionChanged(object sender, EventArgs e)
         {
+            if (this.myGrid.CurrentRow != null)
+            {
+                int index = this.myGrid.CurrentRow.Index;
+                detailGrid.DataSource = NewList[index].detailList;
+                detailGrid.Refresh();
+            }
 
         }
 

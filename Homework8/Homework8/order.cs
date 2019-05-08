@@ -14,21 +14,15 @@ namespace Homework8
         public int Id { get; set;}     //订单编号
         public double price { get; set; }           //订单总价
         public cilent Client;      //客户
-        public string detailString { get; set; }
-        public List<orderDetail> detailList { get; set; }
 
-
-
-
+        public List<orderDetail> detailList = new List<orderDetail>();
 
         public order()
         {
-            detailList = new List<orderDetail>();  //订单细节列表}
         }
         public order(int order_no, cilent Client)
         {
             this.Id = order_no; this.Client = Client;
-            detailList = new List<orderDetail>();
 
         }        //创建订单
 

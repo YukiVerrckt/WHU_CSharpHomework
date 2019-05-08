@@ -7,8 +7,8 @@
     <ProjectGuid>{1B694648-E9F7-465F-B3AE-1186BA1FDA28}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Homework8</RootNamespace>
-    <AssemblyName>Homework8</AssemblyName>
+    <RootNamespace>Homework9</RootNamespace>
+    <AssemblyName>Homework9</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -124,6 +124,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />

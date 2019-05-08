@@ -39,10 +39,10 @@ namespace Homework8
                     newDetail.orderDetailId = tmp.Id;
                     tmp.detailList.Add(newDetail);
                     tmp.calculate();
-                    tmp.detailString = newDetail.ToString();
                     using (var db = new newModel())
                     {
                         db.orderDb.Add(tmp);
+                        Form1.orderBindingSource.Add(tmp);
                         db.SaveChanges();
                     }
                     Close();
